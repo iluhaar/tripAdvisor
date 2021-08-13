@@ -15,7 +15,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places, setplaceClicked }
         <div className={classes.mapContainer}>
             <GoogleMapReact
                 bootstrapURLKeys={{ key: 'AIzaSyCdFyM6NgItsN5VCS_ChoUVUsp-g1rJqoY' }}
-                defaultCenter={coordinates}
+                // defaultCenter={coordinates}
                 center={coordinates}
                 defaultZoom={14}
                 margin={[50, 50, 50, 50]}
@@ -35,7 +35,7 @@ const Map = ({ coordinates, setCoordinates, setBounds, places, setplaceClicked }
                                 <LocationOnOutlinedIcon color='primary' fontSize='large' />
                             ) : (
                                 <Paper elevation={3} className={classes.paper}>
-                                    <Typography className={classes.typography} variat='subtitle' gutterBottom>
+                                    <Typography className={classes.typography} variant='subtitle' gutterBottom>
                                         {place.name}
                                     </Typography>
                                     <img 
