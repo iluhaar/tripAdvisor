@@ -7,17 +7,16 @@ import useStyles from './style.js';
 
 
 const List = ({ places, placeClicked, isLoading, type, setType, rating, setRating }) => {
-    // const [type, setType] = useState('restarants')
-    // const [rating, setRating] = useState('')
+   
     const [elRefs, setElRefs] = useState([]);
     
     const classes = useStyles();
+    
+    useEffect(()=> {
+        const refs = Array(places?.length).fill().map((_, i) => elRefs[i] || createRef())
+        setElRefs(refs);
+    },[places])
 
-    useEffect(() => {
-        setElRefs((refs) => Array(places?.length).fill().map((_, i) => refs[i] || createRef()));
-      }, [places]);
-
-    // console.log({ placeClicked })
     return (
         <div className={classes.container}>
             <Typography variant='h4'>Places near you</Typography>
@@ -47,8 +46,12 @@ const List = ({ places, placeClicked, isLoading, type, setType, rating, setRatin
                     </FormControl>
                     <Grid container spacing={3} className={classes.list}>
                         {places?.map((place, i) => (
-                            <Grid item key={i} xs={12}>
-                                <PlaceDetails place={place} selected={placeClicked === i} refProp={elRefs[i]} />
+                            <Grid ref={elRefs[i]} item key={i} xs={12}>
+                            <PlaceDetails 
+                                    place={place}
+                                    selected={Number(placeClicked) === i}
+                                    refProp={elRefs[i]}
+                                />
                             </Grid>
                         ))}
                     </Grid>

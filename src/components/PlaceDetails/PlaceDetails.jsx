@@ -8,9 +8,9 @@ import defaultRestImg from '../../temp/img/defautlRestPhoto.jpg'
 import useStyles from './style'
 
 const PlaceDetails = ({ place, selected, refProp }) => {
-
-    if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     const classes = useStyles()
+
+    if (selected) refProp?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     return (
         <>
             <Card elevation={6}>
@@ -58,7 +58,6 @@ const PlaceDetails = ({ place, selected, refProp }) => {
                     </CardActions>
                 </CardContent>
             </Card>
-            <div>{console.log(place)}</div>
         </>
     );
 }
